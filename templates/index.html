@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroHealth</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Onboarding Screen -->
+    <div id="onboardingScreen" class="screen active">
+        <div class="onboarding-card glass">
+            <h1>AeroHealth</h1>
+            <p>Your journey to better health starts here.</p>
+            <form id="onboardingForm">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="input-group">
+                    <label>Gender</label>
+                    <div class="gender-selector">
+                        <label><input type="radio" name="gender" value="Male" required> Male</label>
+                        <label><input type="radio" name="gender" value="Female"> Female</label>
+                        <label><input type="radio" name="gender" value="Other"> Other</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn primary">Start Tracking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboardScreen" class="screen">
+        <header class="dashboard-header glass">
+            <h2>Welcome, <span id="displayUser" class="accent-text"></span></h2>
+            <div class="score-display">
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" id="scoreCircle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="score-text" id="totalScore">0.0</text>
+                </svg>
+                <div class="score-label">Total Health Score</div>
+                <p id="scoreMessage" class="score-message">Start tracking your stats!</p>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Steps Widget -->
+            <div class="widget glass">
+                <h3><i class="icon">🚶</i> Steps</h3>
+                <div class="widget-content">
+                    <input type="number" id="stepsInput" placeholder="0" class="large-input" min="0">
+                    <span class="unit">steps</span>
+                </div>
+                <div class="progress-bar"><div class="progress" id="stepsProgress"></div></div>
+            </div>
+
+            <!-- BMI Widget -->
+            <div class="widget glass">
+                <h3><i class="icon">⚖️</i> BMI</h3>
+                <div class="widget-content bmi-inputs">
+                    <div class="small-input-group">
+                        <input type="number" id="heightInput" placeholder="Height (cm)" class="large-input" style="font-size: 1.5rem;" min="0">
+                    </div>
+                    <div class="small-input-group">
+                        <input type="number" id="weightInput" placeholder="Weight (kg)" class="large-input" style="font-size: 1.5rem;" min="0">
+                    </div>
+                </div>
+                <div class="bmi-result">BMI: <span id="bmiValue">--</span></div>
+            </div>
+
+            <!-- Water Widget -->
+            <div class="widget glass water-widget">
+                <h3><i class="icon">💧</i> Water</h3>
+                <div class="water-container">
+                    <div class="water-level" id="waterLevel">
+                        <div class="wave"></div>
+                        <div class="wave wave2"></div>
+                    </div>
+                    <div class="water-text"><span id="waterText">0</span>L</div>
+                </div>
+                <div class="water-buttons">
+                    <button class="btn-water" data-add="0.25">+250ml</button>
+                    <button class="btn-water" data-add="0.5">+500ml</button>
+                    <button class="btn-water" data-add="1.0">+1L</button>
+                </div>
+            </div>
+
+            <!-- Calories Widget -->
+            <div class="widget glass">
+                <h3><i class="icon">🔥</i> Calories</h3>
+                <div class="widget-content cal-input">
+                    <input type="number" id="calInput" placeholder="0" class="large-input" min="0">
+                    <span class="unit">kcal</span>
+                </div>
+                <div class="cal-target">Target: <span id="calTarget">--</span></div>
+                <div class="progress-bar"><div class="progress" id="calProgress"></div></div>
+            </div>
+
+            <!-- Calendar Widget -->
+            <div class="widget glass calendar-widget">
+                <h3><i class="icon">📅</i> 7-Day History</h3>
+                <div class="calendar-list" id="calendarList">
+                    <!-- JS populated days -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../static/js/main.js"></script>
+</body>
+</html>
